@@ -8,12 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet( "/hello" )
+@WebServlet( "/" )
 public class MyCustomServlet extends HttpServlet {
 	private static final long serialVersionUID = -1L;
 
-	private static final String CONTENT_HTML = "<html><head><title>Servlet Workflow Test Page</title></head><body><h1>Servlet Workflow Test Page</h1><h3>Hello from MyCustomServlet</h3><h4></h4>This client side request just started MyCustomServlet's lifecycle on the server side</body></html>";
 	private static final String CONTENT_TYPE_TEXT_HTML = "text/html";
+	private static final String CONTENT_HTML = 
+			"<html>"
+			+ 	"<head>"
+			+ 		"<title>Servlet Workflow Test Page</title>"
+			+ 	"</head>"
+			+ 	"<body>"
+			+ 		"<h1>Servlet Workflow Test Page</h1>"
+			+ 		"<h3>Hello from MyCustomServlet</h3>"
+			+ 		"This client side request just started MyCustomServlet's "
+			+ 		"lifecycle on the server side"
+			+ 	"</body>"
+			+ "</html>";
 
 	@Override
 	public void init() throws ServletException {
