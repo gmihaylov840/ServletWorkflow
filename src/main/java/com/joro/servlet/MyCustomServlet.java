@@ -3,12 +3,14 @@ package com.joro.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet( "/" )
+@WebServlet( "/servletTest" )
 public class MyCustomServlet extends HttpServlet {
 	private static final long serialVersionUID = -1L;
 
@@ -29,6 +31,12 @@ public class MyCustomServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		System.out.println( "MyCustomServlet: init called in " + getClass().getName() );
+	}
+	
+	@Override
+	public void service( ServletRequest req, ServletResponse res ) throws ServletException, IOException {
+		System.out.println( "MyCustomServlet: service called in " + getClass().getName() );
+		super.service( req, res );
 	}
 
 	@Override
