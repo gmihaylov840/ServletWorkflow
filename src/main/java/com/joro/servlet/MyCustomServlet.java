@@ -15,7 +15,7 @@ public class MyCustomServlet extends HttpServlet {
 	private static final long serialVersionUID = -1L;
 
 	private static final String CONTENT_TYPE_TEXT_HTML = "text/html";
-	private static final String CONTENT_HTML = 
+	private static final String RESPONSE_GET = 
 			"<html>"
 			+ 	"<head>"
 			+ 		"<title>Servlet Workflow Test Page</title>"
@@ -23,10 +23,25 @@ public class MyCustomServlet extends HttpServlet {
 			+ 	"<body>"
 			+ 		"<h1>Servlet Workflow Test Page</h1>"
 			+ 		"<h3>Hello from MyCustomServlet</h3>"
+			+ 		"<h4>GET equest has been processed</h4>"
 			+ 		"This client side request just started MyCustomServlet's "
 			+ 		"lifecycle on the server side"
 			+ 	"</body>"
 			+ "</html>";
+	
+	private static final String RESPONSE_POST = 
+			"<html>"
+					+ 	"<head>"
+					+ 		"<title>Servlet Workflow Test Page</title>"
+					+ 	"</head>"
+					+ 	"<body>"
+					+ 		"<h1>Servlet Workflow Test Page</h1>"
+					+ 		"<h3>Hello from MyCustomServlet</h3>"
+					+ 		"<h4>POST equest has been processed</h4>"
+					+ 		"This client side request just started MyCustomServlet's "
+					+ 		"lifecycle on the server side"
+					+ 	"</body>"
+					+ "</html>";
 
 	@Override
 	public void init() throws ServletException {
@@ -45,7 +60,16 @@ public class MyCustomServlet extends HttpServlet {
 
 		System.out.println( "MyCustomServlet: doGet called in " + getClass().getName() );
 		response.setContentType( CONTENT_TYPE_TEXT_HTML );
-		response.getWriter().print( CONTENT_HTML );
+		response.getWriter().print( RESPONSE_GET );
+	}
+	
+	@Override
+	protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException,
+	IOException {
+		
+		System.out.println( "MyCustomServlet: doPost called in " + getClass().getName() );
+		response.setContentType( CONTENT_TYPE_TEXT_HTML );
+		response.getWriter().print( RESPONSE_POST );
 	}
 
 	@Override

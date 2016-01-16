@@ -4,9 +4,15 @@
 <title>Servlet Workflow Test Page</title>
 </head>
 <body>
-	<h1>Index page</h1>
+	<h1>Welcome to myApp</h1>
 	<h3>MyCustomServlet test start page</h3>
-	
-	<a href="servletTest">Sent GET request to MyCustomServlet</a>
+
+	<form action="servletTest" method="get">
+		<input type="submit" value="Sent GET request to MyCustomServlet">
+	</form>
+	<br>
+	<form action="servletTest"  method="post">
+		<input type="submit" value="Sent POST request to MyCustomServlet">
+	</form>
 </body>
 </html>
